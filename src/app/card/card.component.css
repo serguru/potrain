@@ -1,0 +1,10 @@
+img {
+    margin: 3px;
+    width: 120px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+}
+
+.selected {
+    border: 1px solid blue;
+}

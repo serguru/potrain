@@ -1,0 +1,15 @@
+button {
+    width: 326px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.current-challenge {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.step {
+    margin-top: 10px;
+}
+

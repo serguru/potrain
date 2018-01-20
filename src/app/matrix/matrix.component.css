@@ -1,0 +1,60 @@
+.right {
+    color: green;
+}
+
+.wrong {
+    color: red;
+}
+
+table {
+    width: 400px;
+    table-layout: fixed;
+}
+
+td {
+    border-width: 1px;
+    border-style: solid;
+    border-color: grey;
+    height: 30px;
+}
+
+td:first-of-type {
+    border-width: 0px;
+    text-align: center;
+}
+
+td:last-of-type {
+    border-width: 0px;
+    text-align: center;
+}
+
+tr:first-of-type td {
+    border-width: 0px;
+    text-align: center;
+}
+
+tr:last-of-type td {
+    border-width: 0px;
+    text-align: center;
+}
+
+.focused {
+    border-width: 3px;
+    border-color: black;
+}
+
+.raise-move {
+    background-color: green;
+}
+
+.call-move {
+    background-color: yellow;
+}
+
+.fold-move {
+    background-color: lightgray;
+}
+
+.empty-move {
+    background-color: beige;
+}

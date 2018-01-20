@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col" class="pocket">
+    <app-card [card]="pocket.card1" [selected]="selectedCardIndex == 1" (click)="setSelected(1)"></app-card>
+    <app-card [card]="pocket.card2" [selected]="selectedCardIndex == 2" (click)="setSelected(2)"></app-card>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div *ngIf="selectedCardIndex">
+      <app-card-selector [pocket]="pocket" [index]="selectedCardIndex"></app-card-selector>
+    </div>
+    <button type="button" class="btn btn-secondary" (click)="random()">
+      Get random
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="reset()" [disabled]="disabled">
+      Reset
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="changeMatrixVisibility()">
+      {{(matrixVisible ? "Hide":"Show") + " matrix"}}
+    </button>
+    <div>
+      <input type="checkbox" [(ngModel)]="autoHideMatrix" />
+      <label>Auto hide matrix</label>
+    </div>
+  </div>
+</div>
+<!-- Move -->
+<div class="row" class="moves">
+  <div class="col">
+    <app-move *ngFor="let move of moves" [move]="move" [selected]="move == selectedMove"></app-move>
+  </div>
+</div>

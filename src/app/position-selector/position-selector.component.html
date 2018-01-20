@@ -1,0 +1,7 @@
+<div>
+    <button type="button" class="btn btn-secondary" *ngFor="let p of positions" 
+        [disabled]="p.disabled" 
+        (click)="setPosition(p.position)"
+        [ngClass]="{'active': step.position == p.position}">{{p.name}}</button>
+</div>
+
