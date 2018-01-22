@@ -1,0 +1,1 @@
+These svg card pictures are taken from https://commons.wikimedia.org/wiki/Category:SVG_playing_cards_1

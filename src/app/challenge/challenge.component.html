@@ -5,9 +5,6 @@
   <div *ngIf="challenge == currentChallenge" class="current-challenge">
     <div *ngFor="let step of challenge.steps" class="step">{{step.question}}
       <app-position-selector [step]="step"></app-position-selector>
-      <div>
-        <app-matrix></app-matrix>
-      </div>
     </div>
   </div>
 </div>

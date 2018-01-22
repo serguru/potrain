@@ -9,10 +9,10 @@ export class Card {
     public get picPath(): string {
 
         if (!this.kind || !this.suit) {
-            return "assets/cards/back.jpg";
+            return "assets/cards/back.svg";
         }
 
-        return "assets/cards/" + this.kind + "_" + this.suit + ".jpg";
+        return "assets/cards/" + this.kind + "_" + this.suit + ".svg";
     }
 
     private _suit: Enum.Suit;
