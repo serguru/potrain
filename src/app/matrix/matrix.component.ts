@@ -52,6 +52,7 @@ export class MatrixComponent implements OnInit {
 
     if (!filePath) {
       this.matrix.reset();
+      this.mainService.changeBoundaryCells(this.matrix.boundaryCells);
       return;
     }
 
@@ -66,6 +67,7 @@ export class MatrixComponent implements OnInit {
       .subscribe((content) => {
         this.matrix.fill(content);
         this.cache[filePath] = content;
+        this.mainService.changeBoundaryCells(this.matrix.boundaryCells);
       });
   }
 

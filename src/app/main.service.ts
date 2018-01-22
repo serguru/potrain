@@ -7,6 +7,7 @@ import * as Enum from './enum';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Pocket } from './pocket';
 import { Move } from './move';
+import { Cell } from './cell';
 
 @Injectable()
 export class MainService {
@@ -25,6 +26,9 @@ export class MainService {
 
   private matrixVisibilitySource = new BehaviorSubject<boolean>(null);
   public currentMatrixVisibility = this.matrixVisibilitySource.asObservable();
+
+  private boundaryCellsSource = new BehaviorSubject<Array<Cell>>(null);
+  public currentBoundaryCells = this.boundaryCellsSource.asObservable();
 
   appsettings: any;
 
@@ -51,6 +55,10 @@ export class MainService {
 
   changeMatrixVisibility(visible: boolean) {
     this.matrixVisibilitySource.next(visible);
+  }
+
+  changeBoundaryCells(cells: Array<Cell>) {
+    this.boundaryCellsSource.next(cells);
   }
 
   public getAppSettins(success?: Function, error?: Function): void {

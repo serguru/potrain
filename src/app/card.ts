@@ -2,6 +2,7 @@ import * as Enum from './enum';
 import { isArray } from 'util';
 import { MainService } from './main.service';
 import { Pocket } from './pocket';
+import { Cell } from './cell';
 
 export class Card {
 
@@ -47,33 +48,48 @@ export class Card {
     constructor(private mainService: MainService, private pocket: Pocket, suit?: Enum.Suit, kind?: Enum.Kind) {
     };
 
-    public setRandom(exclude?: Array<Card>): Card {
-        while (true) {
-            this.suit = this.getRandomSuit();
-            this.kind = this.getRandomKind();
+    public setCard(exclude: Array<Card>, kind: Enum.Kind, suited: boolean, suit: Enum.Suit): Card {
+
+        for(let i: number = 0; i <= 100; i++) {
+            if (i >= 100) {
+                throw "Failed to generate a random card, index > 99";
+            }
+
+            this.suit = suited ? suit : this.getRandomSuit(suit);
+            this.kind = kind || this.getRandomKind();
 
             if (!this.foundInArray(exclude)) {
                 break;
             }
         }
-
         return this;
     }
 
-    private getRandomSuit(): Enum.Suit {
-        return Math.floor((Math.random() * 4) + 1);
+    private getRandomSuit(suit: Enum.Suit): Enum.Suit {
+
+        let result: Enum.Suit;
+
+        for(let i: number = 0; i <= 100; i++) {
+            result = Math.floor((Math.random() * 4) + 1);
+
+            if (result != suit) {
+                break;
+            }
+        }
+
+        return result;
     }
 
     private getRandomKind(): Enum.Kind {
         return Math.floor((Math.random() * 13) + 1);
     }
 
-    private foundInArray(exclude?: Array<Card>): boolean {
+    private foundInArray(exclude: Array<Card>): boolean {
         if (!exclude) {
             return false;
         }
 
-        for (let i: number = 0; i < (<Array<Card>>exclude).length; i++) {
+        for (let i: number = 0; i < exclude.length; i++) {
             if (this.suit == exclude[i].suit && this.kind == exclude[i].kind) {
                 return true;
             }

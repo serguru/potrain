@@ -4,6 +4,7 @@ import * as Enum from './enum';
 import { Card } from './card';
 import { Cell } from './cell';
 import { isNumber } from 'util';
+import { MainService } from './main.service';
 
 export class Matrix {
 
@@ -13,29 +14,16 @@ export class Matrix {
     constructor() {
 
         this.data = new Array<Array<Cell>>();
-        let i: number = 0;
 
-        for (const kindV in Enum.Kind) {
+        for (let i: number = 1; i <= 13; i++) {
 
-            if (isNaN(Number(kindV))) {
-                continue;
-            }
-
-            i++;
-
-            let j = 0;
             let row: Array<Cell> = new Array<Cell>();
 
-            for (const kindH in Enum.Kind) {
-
-                if (isNaN(Number(kindH))) {
-                    continue;
-                }
-                i++;
+            for (let j: number = 1; j <= 13; j++) {
 
                 const suited: boolean = i < j;
 
-                const cell = new Cell(Number(kindV),Number(kindH),suited);
+                const cell = new Cell(i, j, suited);
                 row.push(cell);
             }
             this.data.push(row);
@@ -54,7 +42,7 @@ export class Matrix {
         }
     }
 
-    private resetRow(rowIndex: number) : void {
+    private resetRow(rowIndex: number): void {
         let line: Array<Cell> = this.data[rowIndex];
 
         for (let i: number = 0; i < line.length; i++) {
@@ -83,7 +71,7 @@ export class Matrix {
 
         let match: RegExpMatchArray = s.match(/>(\d |\d\.\d )/);
 
-        this.raiseSize = !match || match.length == 0 ? undefined : Number(match[0].substring(1,match[0].length - 1));
+        this.raiseSize = !match || match.length == 0 ? undefined : Number(match[0].substring(1, match[0].length - 1));
 
         let trIndex: number = -1;
 
@@ -100,7 +88,7 @@ export class Matrix {
         }
 
         for (let i: number = 0; i < this.data.length; i++) {
-            this.fillRow(i,trIndex,lines);
+            this.fillRow(i, trIndex, lines);
             trIndex = trIndex + 15;
         }
 
@@ -114,6 +102,56 @@ export class Matrix {
         let maxKind: number = Math.max(pocket.card1.kind, pocket.card2.kind) - 1;
         let minKind: number = Math.min(pocket.card1.kind, pocket.card2.kind) - 1;
         let result: Cell = pocket.suited ? this.data[minKind][maxKind] : this.data[maxKind][minKind];
+        return result;
+    }
+
+    private boundaryCell(i: number, j: number): Cell {
+
+        if (!this.data) {
+            return null;
+        }
+
+        let cell: Cell = this.data[i][j];
+
+        if (!cell.action) {
+            return null;
+        }
+
+        for (let n: number = i - 1; n <= i + 1; n++) {
+            if (n < 0 || n > 12) {
+                continue;
+            }
+
+            for (let m: number = j - 1; m <= j + 1; m++) {
+                if (n == i && m == j || m < 0 || m > 12) {
+                    continue;
+                }
+
+                let adjacentCell: Cell = this.data[n][m];
+
+                if (cell.action != adjacentCell.action) {
+                    return cell;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public get boundaryCells(): Array<Cell> {
+
+        let result: Array<Cell> = [];
+
+        for (let i: number = 0; i < 13; i++) {
+            for (let j: number = 0; j < 13; j++) {
+                let cell: Cell = this.boundaryCell(i, j);
+                if (!cell || result.indexOf(cell) >= 0) {
+                    continue;
+                };
+                result.push(cell);
+            }
+        }
+
         return result;
     }
 }

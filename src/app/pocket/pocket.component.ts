@@ -4,6 +4,7 @@ import { Pocket } from '../pocket';
 import { Move } from '../move';
 import { MainService } from '../main.service';
 import { Card } from '../card';
+import { Cell } from '../cell';
 
 @Component({
   selector: 'app-pocket',
@@ -50,6 +51,11 @@ export class PocketComponent implements OnInit {
       this.mainService.currentMatrixVisibility
       .subscribe(visible => {
         this.matrixVisible = visible;
+      });
+
+      this.mainService.currentBoundaryCells
+      .subscribe(cells => {
+        this.pocket.boundaryCells = cells;
       });
   }
 
