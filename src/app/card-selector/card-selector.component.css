@@ -2,3 +2,15 @@ div {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+img {
+    height: 20px;
+}
+
+button:first-of-type {
+    margin-left: 12px;
+}
+
+button {
+    margin-left: 6px;
+}

@@ -2,8 +2,11 @@
   <select [(ngModel)]="card.kind" class="custom-select">
     <option *ngFor="let kind of kinds" [ngValue]="kind.value" [disabled]="disabledKind(kind.value)">{{kind.text}}</option>
   </select>
-  <select [(ngModel)]="card.suit" class="custom-select">
-    <option *ngFor="let suit of suits" [ngValue]="suit.value" [disabled]="disabledSuit(suit.value)">{{suit.text}}</option>
-  </select>
-</div>
 
+  <button type="button" class="btn btn-outline-secondary" *ngFor="let suit of suits" [disabled]="disabledSuit(suit.value)" 
+    (click)="setCardSuit(suit.value)"
+    [ngClass]="{'active': card.suit == suit.value}">
+    <img [src]="suit.url" />
+  </button>
+ 
+</div>

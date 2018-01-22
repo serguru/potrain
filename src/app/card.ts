@@ -9,7 +9,7 @@ export class Card {
     public get picPath(): string {
 
         if (!this.kind || !this.suit) {
-            return "assets/cards/back.svg";
+            return "assets/cards/back_blue.svg";
         }
 
         return "assets/cards/" + this.kind + "_" + this.suit + ".svg";

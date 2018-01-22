@@ -59,10 +59,14 @@ export class CardSelectorComponent implements OnInit {
     return result;
   }
   
+  setCardSuit(suit: Enum.Suit) {
+    this.card.suit = suit;
+  }
+
   get suits(): any {
     let result = [];
-    for (let i: number = 0; i < 4; i++) {
-      result.push({value: i + 1, text: this.suitHeaders[i]});
+    for (let i: number = 1; i <= 4; i++) {
+      result.push({value: i, text: this.suitHeaders[i-1], url: "assets/suits/" + i + ".png"});
     }
     return result;
   }
