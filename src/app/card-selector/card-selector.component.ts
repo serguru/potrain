@@ -11,11 +11,27 @@ import { MainService } from '../main.service';
 })
 export class CardSelectorComponent implements OnInit {
 
-  cardHeaders: Array<string> = ["A","K","Q","J","10","9","8","7","6","5","4","3","2"];
+  cardHeaders: Array<string> = ["Ace","King","Queen","Jack","10","9","8","7","6","5","4","3","2"];
   suitHeaders: Array<string> = ["Spade","Club","Diamond","Heart"];
 
   @Input() pocket: Pocket;
   @Input() index: number;
+
+  get kind(): Enum.Kind {
+    return this.card.kind;
+  }
+
+  set kind(value:Enum.Kind) {
+    if (this.card.kind == value) {
+      return;
+    }
+    this.card.kind = value;
+    if (!this.card.suit) {
+      this.card.suit = Enum.Suit.Spade;
+    }
+
+    document.getElementById("kindSelect").blur();
+  }
 
   get card(): Card {
     if (!this.index) {
@@ -60,7 +76,15 @@ export class CardSelectorComponent implements OnInit {
   }
   
   setCardSuit(suit: Enum.Suit) {
+
+    if (this.card.suit == suit) {
+      return;
+    }
+
     this.card.suit = suit;
+    if (!this.card.kind) {
+      this.card.kind = Enum.Kind.Ace;
+    }
   }
 
   get suits(): any {

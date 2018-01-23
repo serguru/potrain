@@ -7,3 +7,10 @@
 .moves {
     margin-top: 20px;
 }
+
+.option {
+    margin-top: 10px;
+}
+.option label {
+    width: 200px;
+}

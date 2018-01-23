@@ -1,9 +1,10 @@
 img {
     margin: 3px;
     width: 150px;
-    border-radius: 5px;
+    border-radius: 7px;
     border: 1px solid lightgray;
     background-color: whitesmoke;
+    padding: 5px;
 }
 
 .selected {

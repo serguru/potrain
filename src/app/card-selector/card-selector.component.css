@@ -3,14 +3,20 @@ div {
     margin-bottom: 10px;
 }
 
-img {
-    height: 20px;
+button.suit {
+    margin-left: 6px;
+    margin-top: -7px;
+    height: 44px;
+    width: 44px;
+    padding: 0px;
+    border-color: rgb(206, 212, 218)
 }
 
-button:first-of-type {
+
+button.suit:first-of-type {
     margin-left: 12px;
 }
 
-button {
-    margin-left: 6px;
+select {
+    height: auto;
 }

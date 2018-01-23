@@ -93,9 +93,6 @@ export class PocketComponent implements OnInit {
     return !Pocket.ok(this.pocket);
   }
 
-  changeMatrixVisibility(): void {
-    this.matrixVisible = !this.matrixVisible;
-  }
 
 
 }

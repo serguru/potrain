@@ -1,12 +1,15 @@
-<div>
-  <select [(ngModel)]="card.kind" class="custom-select">
-    <option *ngFor="let kind of kinds" [ngValue]="kind.value" [disabled]="disabledKind(kind.value)">{{kind.text}}</option>
+
+  <select [(ngModel)]="kind" class="custom-select h5" id="kindSelect">
+    <option *ngFor="let kind of kinds" [ngValue]="kind.value" [disabled]="disabledKind(kind.value)"
+      class="h5">{{kind.text}}</option>
   </select>
 
-  <button type="button" class="btn btn-outline-secondary" *ngFor="let suit of suits" [disabled]="disabledSuit(suit.value)" 
+  <button type="button" class="btn btn-outline-secondary suit" *ngFor="let suit of suits" [disabled]="disabledSuit(suit.value)" 
     (click)="setCardSuit(suit.value)"
-    [ngClass]="{'active': card.suit == suit.value}">
-    <img [src]="suit.url" />
+    [ngClass]="{'active': card.suit == suit.value}"
+    >
+    <img [src]="suit.url"/>
   </button>
- 
-</div>
+
+
+    
