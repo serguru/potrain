@@ -2,3 +2,10 @@ body {
     padding: 20px;
     background-color: #ffffff;
 }
+
+.flex-container {
+    display: flex;
+    width: 380px;
+    background-color: red;
+}
+

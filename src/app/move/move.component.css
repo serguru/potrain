@@ -1,5 +1,5 @@
 button {
     width: 120px;
-    margin-bottom: 5px;
-    display: block;
+    float: right;
+    margin-bottom: 8px;
 }

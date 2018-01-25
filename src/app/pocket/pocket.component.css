@@ -1,16 +1,29 @@
 .pocket {
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.moves {
-    margin-top: 20px;
+    justify-content: center; 
+    align-items: center;
 }
 
 .option {
-    margin-top: 10px;
+    /* margin-top: 10px; */
 }
 .option label {
-    width: 200px;
+    width: 180px; 
+}
+
+.card-control {
+    height: 80px; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.reset {
+    margin-left: 5px;
+}
+
+.btns-control {
+    /* height: 80px;  */
+    justify-content: center; 
+    align-items: top;
+    padding-left: 20px;
+    padding-right: 20px;
 }

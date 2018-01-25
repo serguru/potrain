@@ -62,7 +62,7 @@ export class MainService {
   }
 
   public getAppSettins(success?: Function, error?: Function): void {
-    this.http.get("assets/appsettings.json")
+    this.http.get("/appsettings.json")
       .subscribe((settings: any) => {
         this.appsettings = settings;
         if (success) {

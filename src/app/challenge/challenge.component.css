@@ -13,3 +13,7 @@ button {
     margin-top: 10px;
 }
 
+.controls {
+    justify-content: center; 
+    align-items: center;
+}
