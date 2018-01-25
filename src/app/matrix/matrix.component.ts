@@ -121,21 +121,6 @@ export class MatrixComponent implements OnInit {
     return this.matrix.data[pocketMaxKind - 1][pocketMinKind - 1];
   }
 
-  // activeCell(cell: Cell): boolean {
-  //   if (!Pocket.ok(this.pocket)) {
-  //     return false;
-  //   }
-
-  //   let pocketMaxKind: number = Math.max(this.pocket.card1.kind, this.pocket.card2.kind);
-  //   let pocketMinKind: number = Math.min(this.pocket.card1.kind, this.pocket.card2.kind);
-
-  //   if (this.pocket.suited) {
-  //     return cell.kind2 == pocketMaxKind && cell.kind1 == pocketMinKind;
-  //   }
-
-  //   return cell.kind1 == pocketMaxKind && cell.kind2 == pocketMinKind;
-  // }
-
   get rightMove(): Move {
     let cell = this.matrix.cellByPocket(this.pocket);
     return cell ? new Move(cell.action, this.matrix.raiseSize) : null;
