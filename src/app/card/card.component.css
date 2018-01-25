@@ -11,3 +11,12 @@ img {
     border: 1px solid blue;
 }
 
+@media (max-width: 1200px) { 
+    div {
+        height: 70px;
+        width: 60px;
+        overflow: hidden;
+    }    
+ }
+
+

@@ -1,13 +1,14 @@
 <div class="flex-container controls">
+  <div>
+    <div *ngFor="let challenge of challenges">
 
-  <div *ngFor="let challenge of challenges">
+      <button class="btn btn-secondary" (click)="this.currentChallenge = challenge" [ngClass]="{'active': challenge == currentChallenge}">{{challenge.name}}</button>
 
-    <button class="btn btn-secondary" (click)="this.currentChallenge = challenge" [ngClass]="{'active': challenge == currentChallenge}">{{challenge.name}}</button>
-
-    <div *ngIf="challenge == currentChallenge" class="current-challenge">
-      <div *ngFor="let step of challenge.steps" class="step">
-        <h5>{{step.question}}</h5>
-        <app-position-selector [step]="step"></app-position-selector>
+      <div *ngIf="challenge == currentChallenge" class="current-challenge">
+        <div *ngFor="let step of challenge.steps" class="step">
+          <h5>{{step.question}}</h5>
+          <app-position-selector [step]="step"></app-position-selector>
+        </div>
       </div>
     </div>
   </div>

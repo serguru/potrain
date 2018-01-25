@@ -6,39 +6,40 @@
     color: red;
 }
 
-table {
-    width: 400px;
+.matrix {
+    width: 100%;
     table-layout: fixed;
+    /* display: block; */
 }
 
-td {
+.matrix td {
     border-width: 1px;
     border-style: solid;
     border-color: grey;
-    height: 30px;
+    height: 25px;
 }
 
-td:first-of-type {
+.matrix td:first-of-type {
     border-width: 0px;
     text-align: center;
 }
 
-td:last-of-type {
+.matrix td:last-of-type {
     border-width: 0px;
     text-align: center;
 }
 
-tr:first-of-type td {
+.matrix tr:first-of-type td {
     border-width: 0px;
     text-align: center;
 }
 
-tr:last-of-type td {
+.matrix tr:last-of-type td {
     border-width: 0px;
     text-align: center;
 }
 
-.focused {
+.matrix .focused {
     border-width: 3px;
     border-color: black;
 }
@@ -56,5 +57,41 @@ tr:last-of-type td {
 }
 
 .empty-move {
-    background-color: lightgray;
+    background-color: rgb(238, 238, 238)
+}
+
+.raise-size {
+    margin-right: 30px;
+    float: right;
+    color: gray;
+    font-size: large;
+}
+
+.highlighted {
+    opacity: 0.7;
+}
+
+.matrix td.bold {
+    font-weight: bold;
+}
+
+.controls {
+    justify-content: center; 
+    align-items: top;
+}
+
+.estimate {
+    margin-left: 20px;
+    width: 100%;
+}
+
+.estimate td:first-of-type {
+    height: 30px;
+    width: 35%;
+}
+
+@media (max-width: 1200px) { 
+    .estimate {
+        margin-bottom: 0px;
+    }
 }

@@ -3,3 +3,9 @@ button {
     float: right;
     margin-bottom: 8px;
 }
+
+@media (max-width: 1200px) { 
+    button {
+        margin-bottom: 2px;
+    }
+}

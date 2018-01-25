@@ -1,46 +1,33 @@
-<div class="row">
-  <div class="col">
-    <h5>Your move:</h5>
-  </div>
-  <div class="col">
-    <h5>{{move?.name}}</h5>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col">
-    <h5>Right move:</h5>
-  </div>
-  <div class="col">
-    <h5 *ngIf="move">{{rightMove?.name}}</h5>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col">
-    <h5>Result:</h5>
-  </div>
-  <div class="col">
-    <h5 [ngClass]="moveEstimate">{{moveEstimate}}</h5>
-  </div>
-</div>
-
-<div class="row" *ngIf="matrixVisible">
-  <div class="col">
-    <h5>{{raiseSize}}</h5>
-    <table>
+<div class="flex-container">
+  <div>
+    <table class="estimate h5">
       <tr>
-        <td *ngFor="let header of cardHeaders">{{header}}</td>
+        <td>Your move:</td>
+        <td>{{move?.name}}</td>
+      </tr>
+      <tr>
+        <td>Right move:</td>
+        <td [ngClass]="moveEstimate">{{move ? rightMove?.name : ""}}</td>
+      </tr>
+    </table>
+    <div class="raise-size">{{raiseSize}}</div>
+    <table class="matrix">
+      <tr>
+        <td *ngFor="let header of cardHeaders" [className]="headerClass(header, true)">{{header}}</td>
       </tr>
       <tr *ngFor="let row of matrix.data">
-        <td>{{cardHeaders[row[0].kind1]}}</td>
+
+        <td [className]="headerClass(cardHeaders[row[0].kind1], false)">{{cardHeaders[row[0].kind1]}}</td>
+
         <td *ngFor="let cell of row" [className]="class(cell)">
-          <app-cell [cell]="cell"></app-cell>
+          <app-cell [showPercent]="matrixVisible" [cell]="cell"></app-cell>
         </td>
-        <td>{{cardHeaders[row[0].kind1]}}</td>
+
+        <td [className]="headerClass(cardHeaders[row[0].kind1], false)">{{cardHeaders[row[0].kind1]}}</td>
+
       </tr>
       <tr>
-        <td *ngFor="let header of cardHeaders">{{header}}</td>
+        <td *ngFor="let header of cardHeaders" [className]="headerClass(header, true)">{{header}}</td>
       </tr>
     </table>
   </div>

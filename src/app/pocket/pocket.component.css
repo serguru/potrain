@@ -7,7 +7,7 @@
     /* margin-top: 10px; */
 }
 .option label {
-    width: 180px; 
+    width: 200px; 
 }
 
 .card-control {
@@ -16,12 +16,18 @@
     align-items: center;
 }
 
+@media (max-width: 1200px) { 
+    .card-control {
+        height: 46px; 
+    }
+}
+
+
 .reset {
     margin-left: 5px;
 }
 
 .btns-control {
-    /* height: 80px;  */
     justify-content: center; 
     align-items: top;
     padding-left: 20px;

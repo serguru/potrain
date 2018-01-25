@@ -21,26 +21,26 @@
 <div class="row">
   <div class="col">
     <div class="flex-container btns-control">
-      <div style="width: 60%">
+      <div style="width: 70%">
         <div class="option" data-toggle="buttons">
           <label class="btn btn-secondary" [ngClass]="{'active': matrixVisible}">
-            <input type="checkbox" [(ngModel)]="matrixVisible"> Show matrix
+            <input type="checkbox" [(ngModel)]="matrixVisible"> Show moves
           </label>
         </div>
 
         <div class="option" data-toggle="buttons">
           <label class="btn btn-secondary" [ngClass]="{'active': autoHideMatrix}">
-            <input type="checkbox" [(ngModel)]="autoHideMatrix"> Auto hide matrix
+            <input type="checkbox" [(ngModel)]="autoHideMatrix"> Auto hide moves
           </label>
         </div>
         <div class="option" data-toggle="buttons">
           <label class="btn btn-secondary" [ngClass]="{'active': pocket.boundaryOnly}">
-            <input type="checkbox" [(ngModel)]="pocket.boundaryOnly"> Boundary cells only
+            <input type="checkbox" [(ngModel)]="pocket.boundaryOnly"> Challenging moves only
           </label>
         </div>
       </div>
-      <div style="width: 40%">
-        <app-move *ngFor="let move of moves" [move]="move" [selected]="move == selectedMove"></app-move>
+      <div>
+          <app-move *ngFor="let move of moves" [move]="move" [selected]="move == selectedMove"></app-move>
       </div>
     </div>
   </div>

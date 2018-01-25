@@ -9,6 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CellComponent implements OnInit {
 
   @Input() cell: Cell;
+  @Input() showPercent: boolean;
 
   constructor() { }
 
