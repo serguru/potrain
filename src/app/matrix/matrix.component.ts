@@ -60,6 +60,7 @@ export class MatrixComponent implements OnInit {
 
     if (content) {
       this.matrix.fill(content);
+      this.mainService.changeBoundaryCells(this.matrix.boundaryCells);
       return;
     }
 
