@@ -1,4 +1,4 @@
-<div class="flex-container">
+<div class="flex-container" >
   <div>
     <table class="estimate h5">
       <tr>
@@ -19,7 +19,7 @@
 
         <td [className]="headerClass(cardHeaders[row[0].kind1], false)">{{cardHeaders[row[0].kind1]}}</td>
 
-        <td *ngFor="let cell of row" [className]="class(cell)">
+        <td *ngFor="let cell of row" [className]="class(cell)" [@visibility]="filePath">
           <app-cell [showPercent]="matrixVisible" [cell]="cell"></app-cell>
         </td>
 

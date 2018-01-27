@@ -5,19 +5,40 @@ import { Move } from '../move';
 import { Cell } from '../cell';
 import * as Enum from '../enum';
 import { MainService } from '../main.service';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  keyframes
+} from '@angular/animations';
+
 
 @Component({
   selector: 'app-matrix',
   templateUrl: './matrix.component.html',
-  styleUrls: ['./matrix.component.css']
+  styleUrls: ['./matrix.component.css'],
+  animations: [
+    trigger('visibility', [
+      transition('* => *', [
+        animate(500, keyframes([
+          style({opacity: 0, offset: 0}),
+          style({opacity: 1, offset: 1.0})
+        ]))
+      ]),
+    ])
+  ]
+  
 })
+
 export class MatrixComponent implements OnInit {
 
   move: Move;
   matrix: Matrix;
   pocket: Pocket;
 
-  private _matrixVisible: boolean;
+  private _matrixVisible: boolean = false;
   public get matrixVisible(): boolean {
     return this._matrixVisible;
   }

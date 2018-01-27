@@ -5,8 +5,9 @@ import { MainService } from '../main.service';
 @Component({
   selector: 'app-challenge',
   templateUrl: './challenge.component.html',
-  styleUrls: ['./challenge.component.css']
+  styleUrls: ['./challenge.component.css'],
 })
+
 export class ChallengeComponent implements OnInit {
 
   private challenges: Array<Challenge>;
@@ -26,7 +27,7 @@ export class ChallengeComponent implements OnInit {
     this.mainService.changeChallenge(this.currentChallenge);
   }
 
-  constructor(private mainService: MainService) { 
+  constructor(private mainService: MainService) {
     this.challenges = [];
   }
 

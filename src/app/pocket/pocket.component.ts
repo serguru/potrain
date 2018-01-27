@@ -93,7 +93,8 @@ export class PocketComponent implements OnInit {
     return !Pocket.ok(this.pocket);
   }
 
-
-
+  onfocus($event): void {
+    $event.target.blur();
+  }
 }
 

@@ -1,4 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { NgModule } from '@angular/core';
 
 import {HttpClientModule} from '@angular/common/http';
@@ -18,6 +20,7 @@ import { MatrixComponent } from './matrix/matrix.component';
 import { CellComponent } from './cell/cell.component';
 import { PocketComponent } from './pocket/pocket.component';
 import { CardSelectorComponent } from './card-selector/card-selector.component';
+import { StepsListComponent } from './steps-list/steps-list.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +34,14 @@ import { CardSelectorComponent } from './card-selector/card-selector.component';
     MatrixComponent,
     CellComponent,
     PocketComponent,
-    CardSelectorComponent
+    CardSelectorComponent,
+    StepsListComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     MainService

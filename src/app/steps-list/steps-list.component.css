@@ -1,0 +1,12 @@
+.steps-container {
+    overflow: hidden;
+}
+
+.step {
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+h5 {
+    margin-bottom: 0px;
+}

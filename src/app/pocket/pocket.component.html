@@ -24,18 +24,18 @@
       <div style="width: 70%">
         <div class="option" data-toggle="buttons">
           <label class="btn btn-secondary" [ngClass]="{'active': matrixVisible}">
-            <input type="checkbox" [(ngModel)]="matrixVisible"> Show moves
+            <input type="checkbox" [(ngModel)]="matrixVisible" (focus)="onfocus($event)"> Show moves
           </label>
         </div>
 
         <div class="option" data-toggle="buttons">
           <label class="btn btn-secondary" [ngClass]="{'active': autoHideMatrix}">
-            <input type="checkbox" [(ngModel)]="autoHideMatrix"> Auto hide moves
+            <input type="checkbox" [(ngModel)]="autoHideMatrix" (focus)="onfocus($event)"> Auto hide moves
           </label>
         </div>
         <div class="option" data-toggle="buttons">
           <label class="btn btn-secondary" [ngClass]="{'active': pocket.boundaryOnly}">
-            <input type="checkbox" [(ngModel)]="pocket.boundaryOnly"> Challenging moves only
+            <input type="checkbox" [(ngModel)]="pocket.boundaryOnly" (focus)="onfocus($event)"> Challenging moves only
           </label>
         </div>
       </div>

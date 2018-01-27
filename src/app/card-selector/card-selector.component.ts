@@ -17,6 +17,14 @@ export class CardSelectorComponent implements OnInit {
   @Input() pocket: Pocket;
   @Input() index: number;
 
+
+  onfocus($event): void {
+    $event.target.blur();
+  }
+
+  constructor(private mainService: MainService) { 
+  }
+
   get kind(): Enum.Kind {
     return this.card.kind;
   }
@@ -29,8 +37,6 @@ export class CardSelectorComponent implements OnInit {
     if (!this.card.suit) {
       this.card.suit = Enum.Suit.Spade;
     }
-
-    document.getElementById("kindSelect").blur();
   }
 
   get card(): Card {
@@ -60,9 +66,6 @@ export class CardSelectorComponent implements OnInit {
 
     return this.card.suit == this.otherCard.suit;
   } 
-
-  constructor(private mainService: MainService) { 
-  }
 
   ngOnInit() {
   }
@@ -94,4 +97,5 @@ export class CardSelectorComponent implements OnInit {
     }
     return result;
   }
+
 }
