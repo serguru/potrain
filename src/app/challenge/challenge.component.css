@@ -7,9 +7,11 @@ button {
 .current-challenge {
     margin-top: 10px;
     margin-bottom: 5px;
+    overflow: hidden;
 }
 
 .controls {
     justify-content: center; 
     align-items: center;
 }
+

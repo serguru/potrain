@@ -9,7 +9,7 @@ export class Card {
     public get picPath(): string {
 
         if (!this.kind || !this.suit) {
-            return "assets/cards/back_blue.svg";
+            return Card.emptyPath();
         }
 
         return "assets/cards/" + this.kind + "_" + this.suit + ".svg";
@@ -98,6 +98,10 @@ export class Card {
         return false;
     }
 
+
+    public static emptyPath(): string {
+        return "assets/cards/back_blue.svg";
+    }
 }
 
 

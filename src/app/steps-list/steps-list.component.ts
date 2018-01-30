@@ -4,7 +4,10 @@ import {
   state,
   style,
   animate,
-  transition
+  transition,
+  keyframes,
+  query,
+  stagger
 } from '@angular/animations';
 import { Challenge } from '../challenge';
 
@@ -13,16 +16,19 @@ import { Challenge } from '../challenge';
   templateUrl: './steps-list.component.html',
   styleUrls: ['./steps-list.component.css'],
   animations: [
+
     trigger('visibility', [
       state("true", style({
         height: '*',
+     //   transform: "translateY(0)",
         opacity: 1,
-        visibility: "visible"
+       // visibility: "visible"
       })),
       state('false', style({
         height: '0',
+       // transform: "translateY(-100%)",
         opacity: 0,
-        visibility: 'hidden'
+       // visibility: 'hidden'
       })),
       transition('true => false', animate('300ms')),
       transition('false => true', animate('300ms'))
