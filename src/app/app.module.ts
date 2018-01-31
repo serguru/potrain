@@ -11,8 +11,6 @@ import { MainService } from './main.service';
 
 import { FormsModule } from '@angular/forms';
 import { CardComponent } from './card/card.component';
-import { PlayerComponent } from './player/player.component';
-import { TableComponent } from './table/table.component';
 import { ChallengeComponent } from './challenge/challenge.component';
 import { PositionSelectorComponent } from './position-selector/position-selector.component';
 import { MoveComponent } from './move/move.component';
@@ -26,8 +24,6 @@ import { StepsListComponent } from './steps-list/steps-list.component';
   declarations: [
     AppComponent,
     CardComponent,
-    PlayerComponent,
-    TableComponent,
     ChallengeComponent,
     PositionSelectorComponent,
     MoveComponent,
