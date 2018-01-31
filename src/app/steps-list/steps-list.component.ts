@@ -18,15 +18,17 @@ import { Challenge } from '../challenge';
   animations: [
 
     trigger('visibility', [
-      state("true", style({
-        height: '*',
-        opacity: 1,
-      })),
-      state('false', style({
+      transition('void => *', animate('300ms',
+        keyframes([
+          style({ height: 0, opacity: 0, offset: 0 }),
+          style({ height: '*', opacity: 1, offset: 1 })
+        ])
+      )),
+
+      transition('* => void', animate('300ms', style({
         height: '0',
         opacity: 0,
-      })),
-      transition('true <=> false', animate('300ms'))
+      })))
     ])
   ]
 })
