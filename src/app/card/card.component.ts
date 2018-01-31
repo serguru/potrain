@@ -30,23 +30,32 @@ export class CardComponent implements OnInit {
   @Input() selected: boolean;
   picPath: string;
 
+  loaded: boolean;
+
   constructor() {
     this.picPath = Card.emptyPath();
+    this.loaded = true;
   }
 
   ngOnInit() {
   }
 
   animationDone($event: AnimationEvent): void {
+    if (this.picPath == this.card.picPath) {
+      this.loaded = true;
+      return;
+    }
+    this.loaded = false;
     this.picPath = this.card.picPath;
   }
 
-  get flipped(): boolean {
-    return this.card && this.card.picPath !== this.picPath;
+  imageLoaded(): void {
+    this.loaded = true;
   }
 
-
-
+  get flipped(): boolean {
+    return this.card && this.card.picPath !== this.picPath || !this.loaded;
+  }
 }
 
 
