@@ -15,34 +15,12 @@ import { AnimationEvent } from '@angular/animations/src/animation_event';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css'],
   animations: [
-    trigger('showTrigger', [
-      transition('* => *', [
-        animate(500, keyframes([
-          style({
-            transform: "rotateY(90deg)",
-            offset: 0
-          }),
-          style({
-            transform: "rotateY(0deg)",
-            offset: 1.0
-          })
-        ]))
-      ]),
-    ]),
-    trigger('hideTrigger', [
-      transition('* => *', [
-        animate(500, keyframes([
-          style({
-            transform: "rotateY(0deg)",
-            offset: 0
-          }),
-          style({
-            transform: "rotateY(90deg)",
-            offset: 1.0
-          })
-        ]))
-      ]),
-    ])
+    trigger("flip", [
+      state("true", style({transform: "rotateY(0.25turn)"})),    
+      state("false", style({transform: "rotateY(0)"})),    
+      transition('true <=> false', animate('150ms'))
+      ]
+    )
   ]
 })
 
@@ -62,6 +40,12 @@ export class CardComponent implements OnInit {
   animationDone($event: AnimationEvent): void {
     this.picPath = this.card.picPath;
   }
+
+  get flipped(): boolean {
+    return this.card && this.card.picPath !== this.picPath;
+  }
+
+
 
 }
 

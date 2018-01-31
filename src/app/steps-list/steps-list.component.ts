@@ -20,18 +20,13 @@ import { Challenge } from '../challenge';
     trigger('visibility', [
       state("true", style({
         height: '*',
-     //   transform: "translateY(0)",
         opacity: 1,
-       // visibility: "visible"
       })),
       state('false', style({
         height: '0',
-       // transform: "translateY(-100%)",
         opacity: 0,
-       // visibility: 'hidden'
       })),
-      transition('true => false', animate('300ms')),
-      transition('false => true', animate('300ms'))
+      transition('true <=> false', animate('300ms'))
     ])
   ]
 })

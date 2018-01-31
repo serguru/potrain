@@ -19,7 +19,7 @@
 
         <td [className]="headerClass(cardHeaders[row[0].kind1], false)">{{cardHeaders[row[0].kind1]}}</td>
 
-        <td *ngFor="let cell of row" [className]="class(cell)" [@visibility]="filePath">
+        <td *ngFor="let cell of row" [className]="class(cell)" >
           <app-cell [showPercent]="matrixVisible" [cell]="cell"></app-cell>
         </td>
 
