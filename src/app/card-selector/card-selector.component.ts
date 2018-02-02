@@ -54,12 +54,12 @@ export class CardSelectorComponent implements OnInit {
   ngOnInit() {
     this.mainService.currentPocket
       .subscribe(pocket => {
-        this.pocketCards = pocket ? pocket.cards : [];
+        this.pocketCards = pocket && pocket.cards ? pocket.cards : [];
       });
 
     this.mainService.currentBoard
       .subscribe(board => {
-        this.boardCards = board ? board.cards : [];
+        this.boardCards = board && board.cards ? board.cards : [];
       });
   }
 

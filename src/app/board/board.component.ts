@@ -3,6 +3,7 @@ import { Card } from '../card';
 import { MainService } from '../main.service';
 import { Board } from '../board';
 import * as Enum from '../enum';
+import { Pocket } from '../pocket';
 
 @Component({
   selector: 'app-board',
@@ -11,21 +12,25 @@ import * as Enum from '../enum';
 })
 export class BoardComponent implements OnInit {
 
-  selectedCard: Card;
+  selectedBoardCard: Card;
+  selectedPocketCard: Card;
   board: Board;
   timer: any;
   delay: number = 300;
   prevent: boolean = false;
+  pocket: Pocket;
 
   constructor(private mainService: MainService) {
     this.board = new Board(mainService);
+    this.pocket = new Pocket(mainService);
+    this.pocket.boundaryOnly = false;
   }
 
   ngOnInit() {
   }
 
   private doClickAction(card: Card): void {
-    this.selectedCard = null;
+    this.selectedBoardCard = null;
     
     let index: number = this.board.cards.indexOf(card);
 
@@ -57,19 +62,28 @@ export class BoardComponent implements OnInit {
     }, this.delay);
   }
 
-  setSelected(card: Card): void {
-    if (this.selectedCard == card) {
-      this.selectedCard = null;
+  setSelectedBoardCard(card: Card): void {
+    if (this.selectedBoardCard == card || this.getDisabled(card)) {
+      this.selectedBoardCard = null;
       return;
     }
 
-    this.selectedCard = card;
+    this.selectedBoardCard = card;
+  }
+
+  setSelectedPocketCard(card: Card): void {
+    if (this.selectedPocketCard == card) {
+      this.selectedPocketCard = null;
+      return;
+    }
+
+    this.selectedPocketCard = card;
   }
 
   onDblClick(card: Card): void {
     clearTimeout(this.timer);
     this.prevent = true;
-    this.setSelected(card);
+    this.setSelectedBoardCard(card);
   }
 
   getDisabled(card: Card): string {
@@ -85,4 +99,16 @@ export class BoardComponent implements OnInit {
         return "";
     }
   }
+
+  public random(): void {
+    this.selectedPocketCard = null;
+    this.pocket.setRandom();
+  }
+
+  public reset(): void {
+    this.selectedPocketCard = null;
+    this.pocket.reset();
+  }
+
+
 }

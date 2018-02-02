@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PocketComponent } from './pocket.component';
+import { MoverComponent } from './mover.component';
 
-describe('PocketComponent', () => {
-  let component: PocketComponent;
-  let fixture: ComponentFixture<PocketComponent>;
+describe('MoverComponent', () => {
+  let component: MoverComponent;
+  let fixture: ComponentFixture<MoverComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PocketComponent ]
+      declarations: [ MoverComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PocketComponent);
+    fixture = TestBed.createComponent(MoverComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

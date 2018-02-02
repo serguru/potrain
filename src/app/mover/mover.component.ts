@@ -7,11 +7,11 @@ import { Card } from '../card';
 import { Cell } from '../cell';
 
 @Component({
-  selector: 'app-pocket',
-  templateUrl: './pocket.component.html',
-  styleUrls: ['./pocket.component.css']
+  selector: 'app-mover',
+  templateUrl: './mover.component.html',
+  styleUrls: ['./mover.component.css']
 })
-export class PocketComponent implements OnInit {
+export class MoverComponent implements OnInit {
 
   pocket: Pocket;
   moves: Array<Move>;

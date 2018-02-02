@@ -1,11 +1,7 @@
-.pocket {
+.mover {
     justify-content: center; 
     align-items: center;
     overflow: hidden;
-}
-
-.option label {
-    width: 200px; 
 }
 
 .card-control {
@@ -30,3 +26,8 @@
     padding-left: 20px;
     padding-right: 20px;
 }
+
+.option label {
+    width: 200px; 
+}
+

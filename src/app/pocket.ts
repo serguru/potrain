@@ -24,7 +24,7 @@ export class Pocket {
         if (this.boundaryOnly) {
 
             if (!this.boundaryCells || this.boundaryCells.length == 0) {
-                throw "Failed to generate a random card, boundary cells array is empty";
+                throw "Failed generating a random card, boundary cells array is empty";
             }
 
             let count: number = this.boundaryCells.length;
@@ -57,7 +57,6 @@ export class Pocket {
             pocket.card1 && pocket.card1.kind && pocket.card1.suit ||
             pocket.card2 && pocket.card2.kind && pocket.card2.suit) ? true : false;
     }
-
 
     get cards(): Array<Card> {
         return [this.card1, this.card2];

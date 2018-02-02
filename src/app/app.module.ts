@@ -16,11 +16,23 @@ import { PositionSelectorComponent } from './position-selector/position-selector
 import { MoveComponent } from './move/move.component';
 import { MatrixComponent } from './matrix/matrix.component';
 import { CellComponent } from './cell/cell.component';
-import { PocketComponent } from './pocket/pocket.component';
+import { MoverComponent } from './mover/mover.component';
 import { CardSelectorComponent } from './card-selector/card-selector.component';
 import { StepsListComponent } from './steps-list/steps-list.component';
 import { BoardComponent } from './board/board.component';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { PreflopComponent } from './preflop/preflop.component';
+
+const appRoutes: Routes = [
+  { path: 'preflop', component: PreflopComponent },
+  { path: 'board', component: BoardComponent },
+  { path: '',
+    redirectTo: '/preflop',
+    pathMatch: 'full'
+  },
+  { path: '**', component: NotFoundComponent }
+];
 
 @NgModule({
   declarations: [
@@ -31,16 +43,22 @@ import { RouterModule, Routes } from '@angular/router';
     MoveComponent,
     MatrixComponent,
     CellComponent,
-    PocketComponent,
+    MoverComponent,
     CardSelectorComponent,
     StepsListComponent,
-    BoardComponent
+    BoardComponent,
+    PreflopComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule.forRoot(
+      appRoutes,
+    //  { enableTracing: true } // <-- debugging purposes only
+    )    
   ],
   providers: [
     MainService
