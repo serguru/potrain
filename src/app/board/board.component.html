@@ -1,0 +1,20 @@
+<div class="board-container">
+  <div *ngFor="let card of board.cards">
+    <app-card [card]="card" [selected]="selectedCard == card" (click)="setSelected(card)"></app-card>
+    <app-card-selector *ngIf="selectedCard == card" [card]="selectedCard"></app-card-selector>
+  </div>
+  <div>
+    <button type="button" class="btn btn-secondary" (click)="board.generateFlop(3)">
+      Flop
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="board.generateFlop(4)">
+      Flop - tern
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="board.generateFlop(5)">
+      Flop - river
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="board.reset()">
+      Reset
+    </button>
+  </div>
+</div>

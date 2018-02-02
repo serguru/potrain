@@ -1,0 +1,14 @@
+.board-container {
+    padding-top: 30px;
+    display: flex;
+    /* width: 380px; */
+    /* justify-content: center; 
+    align-items: center; */
+    /* overflow: hidden; */
+}
+
+button {
+    width: 120px;
+    float: left;
+    margin-bottom: 8px;
+}

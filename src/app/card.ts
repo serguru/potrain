@@ -1,7 +1,6 @@
 import * as Enum from './enum';
 import { isArray } from 'util';
 import { MainService } from './main.service';
-import { Pocket } from './pocket';
 import { Cell } from './cell';
 
 export class Card {
@@ -27,7 +26,7 @@ export class Card {
         }
 
         this._suit = value;
-        this.mainService.changePocket(this.pocket);
+        this.mainService.changeCard(this);
     }
 
     private _kind: Enum.Kind;
@@ -42,10 +41,10 @@ export class Card {
         }
 
         this._kind = value;
-        this.mainService.changePocket(this.pocket);
+        this.mainService.changeCard(this);
     }
 
-    constructor(private mainService: MainService, private pocket: Pocket, suit?: Enum.Suit, kind?: Enum.Kind) {
+    constructor(private mainService: MainService, suit?: Enum.Suit, kind?: Enum.Kind) {
     };
 
     public setCard(exclude: Array<Card>, kind: Enum.Kind, suited: boolean, suit: Enum.Suit): Card {
@@ -101,6 +100,12 @@ export class Card {
 
     public static emptyPath(): string {
         return "assets/cards/back_blue.svg";
+    }
+
+
+    reset(): void {
+        this.suit = null;
+        this.kind = null;
     }
 }
 

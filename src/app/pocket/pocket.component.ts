@@ -16,7 +16,7 @@ export class PocketComponent implements OnInit {
   pocket: Pocket;
   moves: Array<Move>;
   selectedMove: Move;
-  selectedCardIndex: number;
+  selectedCard: Card;
   autoHideMatrix: boolean = true;
 
   constructor(private mainService: MainService) {
@@ -43,17 +43,24 @@ export class PocketComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.mainService.currentMove
+    this.mainService.currentCard
+      .subscribe(card => {
+        if (card == this.pocket.card1 || card == this.pocket.card2) {
+          this.mainService.changePocket(this.pocket);
+        }
+      });
+
+      this.mainService.currentMove
       .subscribe(move => {
         this.selectedMove = this.selectedMove != move ? move : null;
       });
 
-      this.mainService.currentMatrixVisibility
+    this.mainService.currentMatrixVisibility
       .subscribe(visible => {
         this.matrixVisible = visible;
       });
 
-      this.mainService.currentBoundaryCells
+    this.mainService.currentBoundaryCells
       .subscribe(cells => {
         this.pocket.boundaryCells = cells;
       });
@@ -66,7 +73,7 @@ export class PocketComponent implements OnInit {
   }
 
   public random(): void {
-    this.selectedCardIndex = null;
+    this.selectedCard = null;
     this.selectedMove = null;
     this.pocket.setRandom();
     this.mainService.changePocket(this.pocket);
@@ -74,23 +81,23 @@ export class PocketComponent implements OnInit {
   }
 
   public reset(): void {
-    this.selectedCardIndex = null;
+    this.selectedCard = null;
     this.selectedMove = null;
     this.pocket.reset();
     this.mainService.changePocket(this.pocket);
     this.processMatrixVisibility();
   }
 
-  setSelected(index: number): void {
-    if (index == this.selectedCardIndex) {
-      this.selectedCardIndex = null;
+  setSelected(card: Card): void {
+    if (card == this.selectedCard) {
+      this.selectedCard = null;
       return;
     }
-    this.selectedCardIndex = index;
+    this.selectedCard = card;
   }
 
   get disabled(): boolean {
-    return !Pocket.ok(this.pocket);
+    return !Pocket.okHalf(this.pocket);
   }
 
   onfocus($event): void {

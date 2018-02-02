@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col">
     <div class="flex-container pocket">
-      <app-card [card]="pocket.card1" [selected]="selectedCardIndex == 1" (click)="setSelected(1)"></app-card>
-      <app-card [card]="pocket.card2" [selected]="selectedCardIndex == 2" (click)="setSelected(2)"></app-card>
+      <app-card [card]="pocket.card1" [selected]="selectedCard == pocket.card1" (click)="setSelected(pocket.card1)"></app-card>
+      <app-card [card]="pocket.card2" [selected]="selectedCard == pocket.card2" (click)="setSelected(pocket.card2)"></app-card>
     </div>
 
     <div class="flex-container card-control">
-      <app-card-selector *ngIf="selectedCardIndex" [pocket]="pocket" [index]="selectedCardIndex"></app-card-selector>
-      <div *ngIf="!selectedCardIndex">
+      <app-card-selector *ngIf="selectedCard" [card]="selectedCard"></app-card-selector>
+      <div *ngIf="!selectedCard">
         <button type="button" class="btn btn-secondary" (click)="random()">
           Get random
         </button>

@@ -15,10 +15,9 @@ export class Pocket {
     }
 
     constructor(private mainService: MainService) {
-        this.card1 = new Card(mainService, this);
-        this.card2 = new Card(mainService, this);
+        this.card1 = new Card(mainService);
+        this.card2 = new Card(mainService);
     }
-
 
     public setRandom(): Pocket {
 
@@ -39,20 +38,28 @@ export class Pocket {
             this.card2.setCard([this.card1], null, null, null);
         }
 
-
         return this;
     }
 
     public reset(): void {
-        this.card1.kind = null;
-        this.card1.suit = null;
-        this.card2.kind = null;
-        this.card2.suit = null;
+        this.card1.reset();
+        this.card2.reset();
     }
 
     public static ok(pocket: Pocket): boolean {
         return pocket &&
             pocket.card1 && pocket.card1.kind && pocket.card1.suit &&
             pocket.card2 && pocket.card2.kind && pocket.card2.suit ? true : false;
+    }
+
+    public static okHalf(pocket: Pocket): boolean {
+        return pocket && (
+            pocket.card1 && pocket.card1.kind && pocket.card1.suit ||
+            pocket.card2 && pocket.card2.kind && pocket.card2.suit) ? true : false;
+    }
+
+
+    get cards(): Array<Card> {
+        return [this.card1, this.card2];
     }
 }

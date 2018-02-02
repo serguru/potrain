@@ -1,5 +1,6 @@
 
-  <select [(ngModel)]="kind" class="custom-select h5" (focus)="onfocus($event)">
+  <select [(ngModel)]="card.kind" class="custom-select h5" (focus)="onfocus($event)">
+    <option *ngIf="!card?.kind"></option>
     <option *ngFor="let kind of kinds" [ngValue]="kind.value" [disabled]="disabledKind(kind.value)"
       class="h5">{{kind.text}}</option>
   </select>

@@ -11,89 +11,74 @@ import { MainService } from '../main.service';
 })
 export class CardSelectorComponent implements OnInit {
 
-  cardHeaders: Array<string> = ["Ace","King","Queen","Jack","10","9","8","7","6","5","4","3","2"];
-  suitHeaders: Array<string> = ["Spade","Club","Diamond","Heart"];
+  cardHeaders: Array<string> = ["Ace", "King", "Queen", "Jack", "10", "9", "8", "7", "6", "5", "4", "3", "2"];
+  suitHeaders: Array<string> = ["Spade", "Club", "Diamond", "Heart"];
 
-  @Input() pocket: Pocket;
-  @Input() index: number;
+  @Input() card: Card;
 
+  pocketCards: Array<Card>;
+  boardCards: Array<Card>;
+
+  get cards(): Array<Card> {
+    return this.pocketCards.concat(this.boardCards);
+  }
 
   onfocus($event): void {
     $event.target.blur();
   }
 
-  constructor(private mainService: MainService) { 
-  }
-
-  get kind(): Enum.Kind {
-    return this.card.kind;
-  }
-
-  set kind(value:Enum.Kind) {
-    if (this.card.kind == value) {
-      return;
-    }
-    this.card.kind = value;
-    if (!this.card.suit) {
-      this.card.suit = Enum.Suit.Spade;
-    }
-  }
-
-  get card(): Card {
-    if (!this.index) {
-      return null;
+  constructor(private mainService: MainService) {
+    this.pocketCards = [];
+    this.boardCards = [];
     }
 
-    return this.index == 1 ? this.pocket.card1 : this.pocket.card2;
+  cardInUse(kind: Enum.Kind, suit: Enum.Suit): boolean {
+    let cards = this.cards;
+
+    for (let i: number = 0; i < cards.length; i++) {
+      if (cards[i].kind === kind && cards[i].suit === suit) {
+        return true;
+      }
+    }
+    return false;
   }
 
-  get otherCard(): Card {
-    return this.card == this.pocket.card1 ? this.pocket.card2 : this.pocket.card1;
+  disabledKind(kind: Enum.Kind): boolean {
+    return this.cardInUse(kind, this.card.suit);
   }
 
   disabledSuit(suit: Enum.Suit): boolean {
-    if (!this.otherCard || this.otherCard.suit != suit) {
-      return false;
-    }    
-
-    return this.card.kind == this.otherCard.kind;
-  } 
-
-  disabledKind(kind: Enum.Kind): boolean {
-    if (!this.otherCard || this.otherCard.kind != kind) {
-      return false;
-    }    
-
-    return this.card.suit == this.otherCard.suit;
-  } 
+    return this.cardInUse(this.card.kind, suit);
+  }
 
   ngOnInit() {
+    this.mainService.currentPocket
+      .subscribe(pocket => {
+        this.pocketCards = pocket ? pocket.cards : [];
+      });
+
+    this.mainService.currentBoard
+      .subscribe(board => {
+        this.boardCards = board ? board.cards : [];
+      });
   }
 
   get kinds(): any {
     let result = [];
     for (let i: number = 0; i < 13; i++) {
-      result.push({value: i + 1, text: this.cardHeaders[i]});
+      result.push({ value: i + 1, text: this.cardHeaders[i] });
     }
     return result;
   }
-  
+
   setCardSuit(suit: Enum.Suit) {
-
-    if (this.card.suit == suit) {
-      return;
-    }
-
     this.card.suit = suit;
-    if (!this.card.kind) {
-      this.card.kind = Enum.Kind.Ace;
-    }
   }
 
   get suits(): any {
     let result = [];
     for (let i: number = 1; i <= 4; i++) {
-      result.push({value: i, text: this.suitHeaders[i-1], url: "assets/suits/" + i + ".png"});
+      result.push({ value: i, text: this.suitHeaders[i - 1], url: "assets/suits/" + i + ".png" });
     }
     return result;
   }

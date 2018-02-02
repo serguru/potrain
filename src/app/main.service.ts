@@ -8,12 +8,20 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Pocket } from './pocket';
 import { Move } from './move';
 import { Cell } from './cell';
+import { Card } from './card';
+import { Board } from './board';
 
 @Injectable()
 export class MainService {
 
+  private cardSource = new BehaviorSubject<Card>(null);
+  public currentCard = this.cardSource.asObservable();
+
   private pocketSource = new BehaviorSubject<Pocket>(null);
   public currentPocket = this.pocketSource.asObservable();
+
+  private boardSource = new BehaviorSubject<Board>(null);
+  public currentBoard = this.boardSource.asObservable();
 
   private challengeSource = new BehaviorSubject<Challenge>(null);
   public currentChallenge = this.challengeSource.asObservable();
@@ -36,9 +44,17 @@ export class MainService {
 
   }
 
+  changeCard(card: Card) {
+    this.cardSource.next(card);
+  }
+
   changePocket(pocket: Pocket) {
     this.pocketSource.next(pocket);
     this.moveSource.next(null);
+  }
+
+  changeBoard(board: Board) {
+    this.boardSource.next(board);
   }
 
   changeChallenge(challenge: Challenge) {

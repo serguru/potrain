@@ -19,6 +19,7 @@ import { CellComponent } from './cell/cell.component';
 import { PocketComponent } from './pocket/pocket.component';
 import { CardSelectorComponent } from './card-selector/card-selector.component';
 import { StepsListComponent } from './steps-list/steps-list.component';
+import { BoardComponent } from './board/board.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { StepsListComponent } from './steps-list/steps-list.component';
     CellComponent,
     PocketComponent,
     CardSelectorComponent,
-    StepsListComponent
+    StepsListComponent,
+    BoardComponent
   ],
   imports: [
     BrowserModule,
