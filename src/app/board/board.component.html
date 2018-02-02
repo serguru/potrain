@@ -1,20 +1,21 @@
 <div class="board-container">
-  <div *ngFor="let card of board.cards">
-    <app-card [card]="card" [selected]="selectedCard == card" (click)="setSelected(card)"></app-card>
+  <div *ngFor="let card of board.cards" [ngClass]="getDisabled(card)">
+    <app-card [card]="card" [selected]="selectedCard == card" 
+      (click)="onClick(card)" (dblclick)="onDblClick(card)" ></app-card>
     <app-card-selector *ngIf="selectedCard == card" [card]="selectedCard"></app-card-selector>
   </div>
-  <div>
-    <button type="button" class="btn btn-secondary" (click)="board.generateFlop(3)">
+  <!-- <div>
+    <button type="button" class="btn btn-secondary" (click)="board.setFlop()">
       Flop
     </button>
-    <button type="button" class="btn btn-secondary" (click)="board.generateFlop(4)">
+    <button type="button" class="btn btn-secondary" (click)="board.setTurn()" [disabled]="board.state < 3">
       Flop - tern
     </button>
-    <button type="button" class="btn btn-secondary" (click)="board.generateFlop(5)">
+    <button type="button" class="btn btn-secondary" (click)="board.setRiver(4)" [disabled]="board.state < 4">
       Flop - river
     </button>
-    <button type="button" class="btn btn-secondary" (click)="board.reset()">
+    <button type="button" class="btn btn-secondary" (click)="board.reset()" [disabled]="board.state == 0">
       Reset
-    </button>
-  </div>
+    </button> 
+  </div>-->
 </div>

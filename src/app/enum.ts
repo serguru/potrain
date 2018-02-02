@@ -15,3 +15,4 @@ export enum Position {UTG = 1, MP = 2, CO = 3, BTN = 4, SB = 5, BB = 6 };
 
 //export enum Challenge {OpenPosition = 1, FacingRaise = 2, Facing3Bet = 3, Facing4Bet = 4, SqueezeBlinds = 5};
 
+export enum Board {Empty = 0, Flop = 3, Turn = 4, River = 5};

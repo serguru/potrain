@@ -87,25 +87,29 @@ export class Card {
         if (!exclude) {
             return false;
         }
-
         for (let i: number = 0; i < exclude.length; i++) {
-            if (this.suit == exclude[i].suit && this.kind == exclude[i].kind) {
+            let card: Card = exclude[i];
+            if (this == card) {
+                continue;
+            }
+            if (this.suit == card.suit && this.kind == card.kind) {
                 return true;
             }
         }
-
         return false;
     }
-
 
     public static emptyPath(): string {
         return "assets/cards/back_blue.svg";
     }
 
-
     reset(): void {
         this.suit = null;
         this.kind = null;
+    }
+
+    get ok(): boolean {
+        return this.suit && this.kind ? true : false;
     }
 }
 

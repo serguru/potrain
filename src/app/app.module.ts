@@ -20,6 +20,7 @@ import { PocketComponent } from './pocket/pocket.component';
 import { CardSelectorComponent } from './card-selector/card-selector.component';
 import { StepsListComponent } from './steps-list/steps-list.component';
 import { BoardComponent } from './board/board.component';
+import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
   declarations: [
