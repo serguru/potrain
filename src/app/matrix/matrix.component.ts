@@ -37,8 +37,9 @@ export class MatrixComponent implements OnInit {
   move: Move;
   matrix: Matrix;
   pocket: Pocket;
+  crossCell: Cell;
 
-  private _matrixVisible: boolean = false;
+  private _matrixVisible: boolean;
   public get matrixVisible(): boolean {
     return this._matrixVisible;
   }
@@ -123,6 +124,8 @@ export class MatrixComponent implements OnInit {
       .subscribe(visible => {
         this.matrixVisible = visible;
       });
+
+      this.matrixVisible = true;
   }
 
   get raiseSize(): string {
@@ -168,7 +171,7 @@ export class MatrixComponent implements OnInit {
       return "";
     }
 
-    let ac: Cell = this.activeCell;
+    let ac: Cell = this.activeCell || this.crossCell;
 
     let focused: boolean = ac && (ac.kind1 == cell.kind1 && ac.kind2 == cell.kind2);
     let highlighted: boolean = ac && (ac.kind1 == cell.kind1 || ac.kind2 == cell.kind2);
@@ -181,7 +184,7 @@ export class MatrixComponent implements OnInit {
       return "";
     }
 
-    let ac = this.activeCell;
+    let ac = this.activeCell || this.crossCell;
     if (!ac) {
       return "";
     }
@@ -190,6 +193,10 @@ export class MatrixComponent implements OnInit {
 
     return index == (horizontal ? ac.kind2 : ac.kind1) ? "bold" : "";
 
+  }
+
+  onMouseOver(cell): void {
+    this.crossCell = cell;
   }
 
 

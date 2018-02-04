@@ -17,7 +17,7 @@ export class MoverComponent implements OnInit {
   moves: Array<Move>;
   selectedMove: Move;
   selectedCard: Card;
-  autoHideMatrix: boolean = true;
+  autoHideMatrix: boolean = false;
 
   constructor(private mainService: MainService) {
     this.pocket = new Pocket(mainService);
@@ -29,7 +29,7 @@ export class MoverComponent implements OnInit {
     this.moves.push(new Move(Enum.Action.Raise, 1));
   }
 
-  private _matrixVisible: boolean;
+  private _matrixVisible: boolean = true;
   public get matrixVisible(): boolean {
     return this._matrixVisible;
   }

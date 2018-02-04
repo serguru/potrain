@@ -8,3 +8,14 @@ body {
     /* background-color: lightsalmon; */
 }
 
+@media (min-width: 1200px) { 
+    .mobile-layout {
+        display: inherit;
+    }
+}
+
+@media (max-width: 1200px) { 
+    .mobile-layout {
+        display: none;
+    }
+}

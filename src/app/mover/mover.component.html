@@ -1,4 +1,11 @@
-<div class="row">
+<!-- <div class="row toggle-mover">
+  <div class="col">
+    <button type="button" class="btn btn-secondary " (click)="toggleMover()">
+      {{(moverHidden ? 'Show' : 'Hide') + ' mover'}}
+    </button>
+  </div>
+</div> -->
+<div class="row mobile-layout">
   <div class="col">
     <div class="flex-container mover">
       <app-card [card]="pocket.card1" [selected]="selectedCard == pocket.card1" (click)="setSelected(pocket.card1)"></app-card>
@@ -18,30 +25,30 @@
     </div>
   </div>
 </div>
-<div class="row">
-    <div class="col">
-      <div class="flex-container btns-control">
-        <div style="width: 70%">
-          <div class="option" data-toggle="buttons">
-            <label class="btn btn-secondary" [ngClass]="{'active': matrixVisible}">
-              <input type="checkbox" [(ngModel)]="matrixVisible" (focus)="onfocus($event)"> Show moves
-            </label>
-          </div>
-  
-          <div class="option" data-toggle="buttons">
-            <label class="btn btn-secondary" [ngClass]="{'active': autoHideMatrix}">
-              <input type="checkbox" [(ngModel)]="autoHideMatrix" (focus)="onfocus($event)"> Auto hide moves
-            </label>
-          </div>
-          <div class="option" data-toggle="buttons">
-            <label class="btn btn-secondary" [ngClass]="{'active': pocket.boundaryOnly}">
-              <input type="checkbox" [(ngModel)]="pocket.boundaryOnly" (focus)="onfocus($event)"> Challenging moves only
-            </label>
-          </div>
+<div class="row mobile-layout">
+  <div class="col">
+    <div class="flex-container btns-control">
+      <div style="width: 70%">
+        <div class="option" data-toggle="buttons">
+          <label class="btn btn-secondary" [ngClass]="{'active': matrixVisible}">
+            <input type="checkbox" [(ngModel)]="matrixVisible" (focus)="onfocus($event)"> Show moves
+          </label>
         </div>
-        <div>
-          <app-move *ngFor="let move of moves" [move]="move" [selected]="move == selectedMove"></app-move>
+
+        <div class="option" data-toggle="buttons">
+          <label class="btn btn-secondary" [ngClass]="{'active': autoHideMatrix}">
+            <input type="checkbox" [(ngModel)]="autoHideMatrix" (focus)="onfocus($event)"> Auto hide moves
+          </label>
         </div>
+        <div class="option" data-toggle="buttons">
+          <label class="btn btn-secondary" [ngClass]="{'active': pocket.boundaryOnly}">
+            <input type="checkbox" [(ngModel)]="pocket.boundaryOnly" (focus)="onfocus($event)"> Challenging moves only
+          </label>
+        </div>
+      </div>
+      <div>
+        <app-move *ngFor="let move of moves" [move]="move" [selected]="move == selectedMove"></app-move>
       </div>
     </div>
   </div>
+</div>

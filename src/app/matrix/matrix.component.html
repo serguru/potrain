@@ -1,6 +1,6 @@
 <div class="flex-container" >
   <div>
-    <table class="estimate h5">
+    <table class="estimate h5 mobile-layout">
       <tr>
         <td>Your move:</td>
         <td>{{move?.name}}</td>
@@ -19,8 +19,9 @@
 
         <td [className]="headerClass(cardHeaders[row[0].kind1], false)">{{cardHeaders[row[0].kind1]}}</td>
 
-        <td *ngFor="let cell of row" [className]="class(cell)" >
-          <app-cell [showPercent]="matrixVisible" [cell]="cell"></app-cell>
+        <td *ngFor="let cell of row" [className]="class(cell)" (mouseover)="onMouseOver(cell)"
+          (mouseleave)="onMouseOver(null)">
+          <app-cell [showPercent]="matrixVisible" [cell]="cell" ></app-cell>
         </td>
 
         <td [className]="headerClass(cardHeaders[row[0].kind1], false)">{{cardHeaders[row[0].kind1]}}</td>
