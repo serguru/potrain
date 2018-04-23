@@ -88,3 +88,22 @@
         margin-bottom: 0px;
     }
 }
+
+.move-content {
+    height: 20px;
+    margin-left: 20px;
+    text-align: center;
+}
+
+.raise-content {
+    color: darkgreen;
+}
+
+.call-content {
+    color: darkgoldenrod;
+}
+
+.fold-content {
+    color: dimgray;
+}
+

@@ -38,6 +38,10 @@ export class MatrixComponent implements OnInit {
   matrix: Matrix;
   pocket: Pocket;
   crossCell: Cell;
+  crossCellFixed: boolean;
+
+
+  cardHeaders: Array<string> = ["", "A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"];
 
   private _matrixVisible: boolean;
   public get matrixVisible(): boolean {
@@ -52,7 +56,6 @@ export class MatrixComponent implements OnInit {
     this.mainService.changeMatrixVisibility(this.matrixVisible);
   }
 
-  cardHeaders: Array<string> = ["", "A", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2"];
 
   private cache: any = {};
 
@@ -95,6 +98,7 @@ export class MatrixComponent implements OnInit {
   }
 
   constructor(private mainService: MainService) {
+    this.crossCellFixed = false;
     this.matrix = new Matrix();
   }
 
@@ -190,9 +194,62 @@ export class MatrixComponent implements OnInit {
 
   }
 
-  onMouseOver(cell): void {
+  public get currentMoveContent(): string {
+
+    if (!this.crossCell) {
+      return "";
+    }
+
+    let s: string = "";
+
+    switch (this.crossCell.action) {
+      case Enum.Action.Raise:
+        s = "raise";
+        break;
+      case Enum.Action.Call:
+        s = "call";
+        break;
+      case Enum.Action.Fold:
+        s = "fold";
+        break;
+      default:
+        s = "";
+    }
+
+
+    return this.cardHeaders[this.crossCell.kind1] + this.cardHeaders[this.crossCell.kind2] +
+      (this.crossCell.kind1 != this.crossCell.kind2 ? (this.crossCell.suited ? "s" : "o") : "") + " " + s;
+  }
+
+  public get moveContentClass(): string {
+    let result: string = "move-content h4 ";
+
+    if (!this.crossCell) {
+      return result;
+    }
+
+    switch (this.crossCell.action) {
+      case Enum.Action.Raise:
+          return result + "raise-content";
+      case Enum.Action.Call:
+          return result + "call-content";
+      case Enum.Action.Fold:
+          return result + "fold-content";
+      default:
+          return result;
+    }
+  }
+
+  onMouseOver(cell: Cell): void {
+    if (this.crossCellFixed) {
+      return;
+    }
     this.crossCell = cell;
   }
 
+  onMouseClick(cell: Cell): void {
+    this.crossCellFixed = !this.crossCellFixed;
+    this.crossCell = this.crossCellFixed ? cell : null;
+  }
 
 }

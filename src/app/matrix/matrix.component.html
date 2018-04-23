@@ -10,6 +10,7 @@
         <td [ngClass]="moveEstimate">{{move ? rightMove?.name : ""}}</td>
       </tr>
     </table>
+    <div  [ngClass]="moveContentClass">{{currentMoveContent}}</div>
     <table class="matrix">
       <tr>
         <td *ngFor="let header of cardHeaders" [className]="headerClass(header, true)">{{header}}</td>
@@ -19,7 +20,7 @@
         <td [className]="headerClass(cardHeaders[row[0].kind1], false)">{{cardHeaders[row[0].kind1]}}</td>
 
         <td *ngFor="let cell of row" [className]="class(cell)" (mouseover)="onMouseOver(cell)"
-          (mouseleave)="onMouseOver(null)">
+          (mouseleave)="onMouseOver(null)" (click)="onMouseClick(cell)">
           <app-cell [showPercent]="matrixVisible" [cell]="cell" ></app-cell>
         </td>
 
