@@ -9,7 +9,6 @@ import { MainService } from './main.service';
 export class Matrix {
 
     public data: Array<Array<Cell>>;
-    public raiseSize: number; // best rise size in pots
 
     constructor() {
 
@@ -30,6 +29,21 @@ export class Matrix {
         }
     }
 
+    private resetRow(rowIndex: number): void {
+        let line: Array<Cell> = this.data[rowIndex];
+
+        for (let i: number = 0; i < line.length; i++) {
+            let cell: Cell = line[i];
+            cell.reset();
+        }
+    }
+
+    reset(): void {
+        for (let i: number = 0; i < this.data.length; i++) {
+            this.resetRow(i);
+        }
+    }
+
     private fillRow(rowIndex: number, trIndex: number, lines: Array<string>): void {
         let tdIndex: number = trIndex + 1;
 
@@ -42,22 +56,6 @@ export class Matrix {
         }
     }
 
-    private resetRow(rowIndex: number): void {
-        let line: Array<Cell> = this.data[rowIndex];
-
-        for (let i: number = 0; i < line.length; i++) {
-            let cell: Cell = line[i];
-            cell.reset();
-        }
-    }
-
-    reset(): void {
-        this.raiseSize = null;
-        for (let i: number = 0; i < this.data.length; i++) {
-            this.resetRow(i);
-        }
-    }
-
     public fill(content: string): Matrix {
 
         if (!content) {
@@ -66,12 +64,6 @@ export class Matrix {
         }
 
         let lines: Array<string> = content.split(/\r\n|\r|\n/g);
-
-        let s: string = lines[2]; // <b>1 pot</b> or <b>0.5 pot</b>
-
-        let match: RegExpMatchArray = s.match(/>(\d |\d\.\d )/);
-
-        this.raiseSize = !match || match.length == 0 ? undefined : Number(match[0].substring(1, match[0].length - 1));
 
         let trIndex: number = -1;
 

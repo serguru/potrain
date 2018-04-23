@@ -1,7 +1,7 @@
 import * as Enum from './enum';
 
 export class Move {
-    constructor(public action: Enum.Action, public size?: number) {
+    constructor(public action: Enum.Action) {
 
     };
     public get name(): string {
@@ -10,9 +10,8 @@ export class Move {
         switch (this.action) {
             case Enum.Action.Fold:
             case Enum.Action.Call:
-                return n;
             case Enum.Action.Raise:
-                return n + (this.size ? " " + this.size + " pot" : "?");
+                return n;
             default:
                 return "";
         }

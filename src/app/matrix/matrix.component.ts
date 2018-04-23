@@ -128,10 +128,6 @@ export class MatrixComponent implements OnInit {
       this.matrixVisible = true;
   }
 
-  get raiseSize(): string {
-    return this.matrix.raiseSize ? "Best raise size " + this.matrix.raiseSize + " pot" : "";
-  }
-
   get activeCell(): Cell {
     if (!Pocket.ok(this.pocket)) {
       return null;
@@ -148,7 +144,7 @@ export class MatrixComponent implements OnInit {
 
   get rightMove(): Move {
     let cell = this.matrix.cellByPocket(this.pocket);
-    return cell ? new Move(cell.action, this.matrix.raiseSize) : null;
+    return cell ? new Move(cell.action) : null;
   }
 
   get moveEstimate(): string {
@@ -161,8 +157,7 @@ export class MatrixComponent implements OnInit {
       return "";
     }
 
-    let raiseComparison: boolean = rm.action == Enum.Action.Raise ? this.move.size == rm.size : true;
-    return this.move.action == rm.action && raiseComparison ? "right" : "wrong";
+    return this.move.action == rm.action ? "right" : "wrong";
   }
 
   class(cell: Cell): string {

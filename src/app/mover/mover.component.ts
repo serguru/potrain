@@ -25,8 +25,7 @@ export class MoverComponent implements OnInit {
 
     this.moves.push(new Move(Enum.Action.Fold));
     this.moves.push(new Move(Enum.Action.Call));
-    this.moves.push(new Move(Enum.Action.Raise, 0.5));
-    this.moves.push(new Move(Enum.Action.Raise, 1));
+    this.moves.push(new Move(Enum.Action.Raise));
   }
 
   private _matrixVisible: boolean = true;
