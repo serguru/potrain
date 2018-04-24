@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Challenge } from '../challenge';
 import { MainService } from '../main.service';
+import { Step } from '../step';
 
 @Component({
   selector: 'app-challenge',
@@ -37,6 +38,8 @@ export class ChallengeComponent implements OnInit {
     for (let i: number = 0; i < challenges.length; i++) {
       let challenge: Challenge = new Challenge(challenges[i], (filePath: string) => {
         this.mainService.changeFilePath(filePath);
+      },(step: Step) => {
+        this.mainService.changePosition(step.position);
       });
       this.challenges.push(challenge);
     }

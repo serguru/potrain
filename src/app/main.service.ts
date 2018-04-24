@@ -38,6 +38,9 @@ export class MainService {
   private boundaryCellsSource = new BehaviorSubject<Array<Cell>>(null);
   public currentBoundaryCells = this.boundaryCellsSource.asObservable();
 
+  private positionSource = new BehaviorSubject<Enum.Position>(null);
+  public currentPosition = this.positionSource.asObservable();
+
   appsettings: any;
 
   constructor(private http: HttpClient) {
@@ -65,6 +68,10 @@ export class MainService {
     this.filePathSource.next(filePath);
   }
 
+  changePosition(positon: Enum.Position) {
+    this.positionSource.next(positon);
+  }
+
   changeMove(move: Move) {
     this.moveSource.next(move);
   }
@@ -84,12 +91,12 @@ export class MainService {
         if (success) {
           success(settings);
         }
-      }, 
-      (err) => { 
-        if (error) { 
-          error(err); 
-        } 
-      });
+      },
+        (err) => {
+          if (error) {
+            error(err);
+          }
+        });
   }
 
   // getFile(filePath: string): Observable<string> {

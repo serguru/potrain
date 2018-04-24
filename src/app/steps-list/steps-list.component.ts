@@ -10,6 +10,7 @@ import {
   stagger
 } from '@angular/animations';
 import { Challenge } from '../challenge';
+import { MainService } from '../main.service';
 
 @Component({
   selector: 'app-steps-list',
@@ -38,9 +39,14 @@ export class StepsListComponent implements OnInit {
   @Input() challenge: Challenge;
   @Input() visible: boolean;
 
-  constructor() { }
+  constructor(private mainService: MainService) {
+  }
 
   ngOnInit() {
+    this.mainService.currentPosition
+      .subscribe(position => {
+        this.challenge.steps[0].position = position;
+      });
   }
 
 }
