@@ -40,7 +40,6 @@ export class MatrixComponent implements OnInit {
   crossCell: Cell;
   crossCellFixed: boolean;
 
-
   cardHeaders: Array<string> = ["", "A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"];
 
   private _matrixVisible: boolean;
@@ -55,7 +54,6 @@ export class MatrixComponent implements OnInit {
     this._matrixVisible = value;
     this.mainService.changeMatrixVisibility(this.matrixVisible);
   }
-
 
   private cache: any = {};
 
@@ -127,7 +125,12 @@ export class MatrixComponent implements OnInit {
     this.mainService.currentMatrixVisibility
       .subscribe(visible => {
         this.matrixVisible = visible;
-      });
+        if (this.matrixVisible) {
+          return;
+        }
+        this.crossCell = null;  
+        this.crossCellFixed = false;
+    });
 
       this.matrixVisible = true;
   }
@@ -216,7 +219,6 @@ export class MatrixComponent implements OnInit {
         s = "";
     }
 
-
     return this.cardHeaders[this.crossCell.kind1] + this.cardHeaders[this.crossCell.kind2] +
       (this.crossCell.kind1 != this.crossCell.kind2 ? (this.crossCell.suited ? "s" : "o") : "") + " " + s;
   }
@@ -241,6 +243,13 @@ export class MatrixComponent implements OnInit {
   }
 
   onMouseOver(cell: Cell): void {
+
+    if (this.activeCell || !this.matrixVisible) {
+      this.crossCell = null;  
+      this.crossCellFixed = false;
+      return;
+    }
+
     if (this.crossCellFixed) {
       return;
     }
@@ -248,8 +257,14 @@ export class MatrixComponent implements OnInit {
   }
 
   onMouseClick(cell: Cell): void {
-    this.crossCellFixed = !this.crossCellFixed;
-    this.crossCell = this.crossCellFixed ? cell : null;
-  }
 
+    if (this.activeCell || !this.matrixVisible || this.crossCellFixed && cell == this.crossCell) {
+      this.crossCell = null;  
+      this.crossCellFixed = false;
+      return;
+    }
+
+    this.crossCellFixed = true;
+    this.crossCell = cell;
+  }
 }
