@@ -92,7 +92,7 @@ export class MainService {
       });
   }
 
-  getFile(filePath: string): Observable<string> {
-    return this.http.get("assets/challenge/" + filePath,{ responseType: 'text' });
-  }
+  // getFile(filePath: string): Observable<string> {
+  //   return this.http.get("assets/challenge/" + filePath,{ responseType: 'text' });
+  // }
 }

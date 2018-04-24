@@ -5,12 +5,18 @@ import { Card } from './card';
 import { Cell } from './cell';
 import { isNumber } from 'util';
 import { MainService } from './main.service';
+import { ChallengeData } from './challengeData';
+import { Challenge } from './challenge';
 
 export class Matrix {
 
     public data: Array<Array<Cell>>;
 
+    private rawData: ChallengeData;
+
     constructor() {
+
+        this.rawData = new ChallengeData();
 
         this.data = new Array<Array<Cell>>();
 
@@ -44,44 +50,65 @@ export class Matrix {
         }
     }
 
-    private fillRow(rowIndex: number, trIndex: number, lines: Array<string>): void {
-        let tdIndex: number = trIndex + 1;
 
-        let line: Array<Cell> = this.data[rowIndex];
+    // Reading data from html file
+    // private fillRow(rowIndex: number, trIndex: number, lines: Array<string>): void {
+    //     let tdIndex: number = trIndex + 1;
 
-        for (let i: number = 0; i < line.length; i++) {
-            let cell: Cell = line[i];
-            cell.fillWithMove(lines[tdIndex]);
-            tdIndex++;
-        }
-    }
+    //     let line: Array<Cell> = this.data[rowIndex];
 
-    public fill(content: string): Matrix {
+    //     for (let i: number = 0; i < line.length; i++) {
+    //         let cell: Cell = line[i];
+    //         cell.fillWithMove(lines[tdIndex]);
+    //         tdIndex++;
+    //     }
+    // }
 
-        if (!content) {
+    public fill(filePath: string): Matrix {
+
+        if (!filePath) {
             this.reset();
             return;
         }
 
-        let lines: Array<string> = content.split(/\r\n|\r|\n/g);
+        // Reading data from html file
+        // let lines: Array<string> = content.split(/\r\n|\r|\n/g);
 
-        let trIndex: number = -1;
+        // let trIndex: number = -1;
 
-        for (let i: number = 0; i < lines.length; i++) {
-            let s: string = lines[i];
-            if (s.indexOf('<tr>') >= 0) {
-                trIndex = i;
-                break;
-            }
-        }
+        // for (let i: number = 0; i < lines.length; i++) {
+        //     let s: string = lines[i];
+        //     if (s.indexOf('<tr>') >= 0) {
+        //         trIndex = i;
+        //         break;
+        //     }
+        // }
 
-        if (trIndex == -1) {
-            throw "Source content does not contain <tr> tag";
-        }
+        // if (trIndex == -1) {
+        //     throw "Source content does not contain <tr> tag";
+        // }
+
+        // for (let i: number = 0; i < this.data.length; i++) {
+        //     this.fillRow(i, trIndex, lines);
+        //     trIndex = trIndex + 15;
+        // }
+
+
+        let slashIndex = filePath.indexOf("/");
+
+        filePath = filePath.substr(slashIndex + 1);
+
+        let jdata: any = this.rawData[filePath];
 
         for (let i: number = 0; i < this.data.length; i++) {
-            this.fillRow(i, trIndex, lines);
-            trIndex = trIndex + 15;
+            let line: Array<Cell> = this.data[i];
+            let jline: any = jdata[i];
+            for (let j: number = 0; j < line.length; j++) {
+                let cell: Cell = line[j];
+                let jcell: any = jline[j];
+                cell.action = jcell.action;
+                cell.percent = jcell.percent;
+            }
         }
 
         return this;

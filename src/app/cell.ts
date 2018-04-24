@@ -27,23 +27,23 @@ export class Cell {
         }
     }
 
-    public fillWithMove(s: string): void {
+    // public fillWithMove(s: string): void {
 
-        if (s.indexOf('<td class="r">') >= 0) {
-            this.action = Enum.Action.Raise;
-        } else if (s.indexOf('<td class="c">') >= 0) {
-            this.action = Enum.Action.Call;
-        } else {
-            this.action = Enum.Action.Fold;
-        }
+    //     if (s.indexOf('<td class="r">') >= 0) {
+    //         this.action = Enum.Action.Raise;
+    //     } else if (s.indexOf('<td class="c">') >= 0) {
+    //         this.action = Enum.Action.Call;
+    //     } else {
+    //         this.action = Enum.Action.Fold;
+    //     }
 
-        let match: RegExpMatchArray = s.match(/>-?\d?\d+</);
+    //     let match: RegExpMatchArray = s.match(/>-?\d?\d+</);
 
-        if (!match || match.length == 0) {
-            this.percent = undefined;
-            return;
-        }
+    //     if (!match || match.length == 0) {
+    //         this.percent = undefined;
+    //         return;
+    //     }
 
-        this.percent = Number(match[0].substring(1, match[0].length - 1));
-    }
+    //     this.percent = Number(match[0].substring(1, match[0].length - 1));
+    // }
 }

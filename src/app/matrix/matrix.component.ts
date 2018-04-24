@@ -55,7 +55,7 @@ export class MatrixComponent implements OnInit {
     this.mainService.changeMatrixVisibility(this.matrixVisible);
   }
 
-  private cache: any = {};
+  //private cache: any = {};
 
   private _filePath: string;
   public get filePath(): string {
@@ -79,20 +79,52 @@ export class MatrixComponent implements OnInit {
       return;
     }
 
-    let content: any = this.cache[filePath];
-
-    if (content) {
-      this.matrix.fill(content);
+      this.matrix.fill(filePath);
       this.mainService.changeBoundaryCells(this.matrix.boundaryCells);
-      return;
-    }
 
-    this.mainService.getFile(filePath)
-      .subscribe((content) => {
-        this.matrix.fill(content);
-        this.cache[filePath] = content;
-        this.mainService.changeBoundaryCells(this.matrix.boundaryCells);
-      });
+
+    // let content: any = this.cache[filePath];
+
+    // if (content) {
+    //   this.matrix.fill(content);
+    //   this.mainService.changeBoundaryCells(this.matrix.boundaryCells);
+    //   return;
+    // }
+
+    // this.mainService.getFile(filePath)
+    //   .subscribe((content) => {
+    //     this.matrix.fill(content);
+
+    // Getting data as str from html to convert them to json and use in ChallengeData class
+
+    //     let datastr = JSON.stringify(this.matrix.data);
+    //     let datacopy = JSON.parse(datastr);
+
+    //     for (let i: number = 0; i < datacopy.length; i++) {
+    //         let line: Array<Cell> = datacopy[i];
+    //         for (let j: number = 0; j < line.length; j++) {
+    //             let cell: Cell = line[j];
+    //             delete cell.kind1;
+    //             delete cell.kind2;
+    //             delete cell.suited;
+    //         }
+    //     }
+
+    //     let finalObject = {};
+    //     let dataName = filePath.replace(".html","");
+
+    //     let slashIndex = dataName.indexOf("/");
+
+    //     dataName = dataName.substr(slashIndex + 1);
+
+    //     finalObject[dataName] = datacopy;
+    //     datastr = JSON.stringify(finalObject);
+
+    //     datastr = datastr.substr(2,datastr.length - 3);
+
+    //     this.cache[filePath] = content;
+    //     this.mainService.changeBoundaryCells(this.matrix.boundaryCells);
+    //   });
   }
 
   constructor(private mainService: MainService) {

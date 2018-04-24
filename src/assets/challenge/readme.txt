@@ -1,0 +1,1 @@
+These html files were initially be used as data source. Once ChanllengeData class was created these files are just for reference, the appplication does not use them.
