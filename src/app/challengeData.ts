@@ -30714,6 +30714,557 @@ export class ChallengeData {
     ]
   ];
 
+  "6_1_2_BB_UTGR3BBC2nd" = [
+    [
+      {
+        "action": 3
+      },
+      {
+        "action": 3
+      },
+      {
+        "action": 3
+      },
+      {
+        "action": 3
+      },
+      {
+        "action": 2
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      }
+    ],
+    [
+      {
+        "action": 3
+      },
+      {
+        "action": 3
+      },
+      {
+        "action": 3
+      },
+      {
+        "action": 2,
+        "percent": 87
+      },
+      {
+        "action": 2
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      }
+    ],
+    [
+      {
+        "action": 1,
+        "percent": 38
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 3
+      },
+      {
+        "action": 2,
+        "percent": 91
+      },
+      {
+        "action": 2
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      }
+    ],
+    [
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 3
+      },
+      {
+        "action": 2,
+        "percent": 53
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      }
+    ],
+    [
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 3
+      },
+      {
+        "action": 2,
+        "percent": 69
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      }
+    ],
+    [
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 2,
+        "percent": 57
+      },
+      {
+        "action": 2
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      }
+    ],
+    [
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 2,
+        "percent": 3
+      },
+      {
+        "action": 2,
+        "percent": 5
+      },
+      {
+        "action": 1,
+        "percent": 4
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      }
+    ],
+    [
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 2,
+        "percent": 25
+      },
+      {
+        "action": 2,
+        "percent": 7
+      },
+      {
+        "action": 1,
+        "percent": 11
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      }
+    ],
+    [
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 2,
+        "percent": 41
+      },
+      {
+        "action": 2,
+        "percent": 20
+      },
+      {
+        "action": 2,
+        "percent": 12
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      }
+    ],
+    [
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 2
+      },
+      {
+        "action": 2
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      }
+    ],
+    [
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 2
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      }
+    ],
+    [
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 2
+      },
+      {
+        "action": 1
+      }
+    ],
+    [
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 1
+      },
+      {
+        "action": 2
+      }
+    ]
+  ];
+
   "6_1_3_BB_UTGR3BBC3rd" = [
     [
       {

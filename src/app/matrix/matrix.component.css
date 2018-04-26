@@ -80,7 +80,11 @@
 
 .estimate td:first-of-type {
     height: 30px;
-    width: 35%;
+    width: 45%;
+}
+
+.estimate td:last-of-type {
+    padding-left: 10px;
 }
 
 @media (max-width: 1200px) { 
