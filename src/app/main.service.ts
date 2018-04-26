@@ -38,9 +38,6 @@ export class MainService {
   private boundaryCellsSource = new BehaviorSubject<Array<Cell>>(null);
   public currentBoundaryCells = this.boundaryCellsSource.asObservable();
 
-  private positionSource = new BehaviorSubject<Enum.Position>(null);
-  public currentPosition = this.positionSource.asObservable();
-
   appsettings: any;
 
   constructor(private http: HttpClient) {
@@ -66,10 +63,6 @@ export class MainService {
 
   changeFilePath(filePath: string) {
     this.filePathSource.next(filePath);
-  }
-
-  changePosition(positon: Enum.Position) {
-    this.positionSource.next(positon);
   }
 
   changeMove(move: Move) {

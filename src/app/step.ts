@@ -15,10 +15,6 @@ export class Step {
 
         this._position = value;
         this.challenge.positionChanged();
-
-        if (this.challenge.onPositionChanged && this.index == 0) {
-            this.challenge.onPositionChanged(this);
-        }
     }
 
     constructor(public question: string, public challenge: Challenge) {

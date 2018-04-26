@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Challenge } from '../challenge';
 import { MainService } from '../main.service';
 import { Step } from '../step';
+import * as Enum from '../enum';
 
 @Component({
   selector: 'app-challenge',
@@ -15,6 +16,7 @@ export class ChallengeComponent implements OnInit {
 
   private _currentChallenge: Challenge;
 
+
   get currentChallenge(): Challenge {
     return this._currentChallenge;
   }
@@ -24,7 +26,14 @@ export class ChallengeComponent implements OnInit {
       return;
     }
 
+    let previousPosition: Enum.Position = this._currentChallenge ? this._currentChallenge.steps[0].position : null;
+
     this._currentChallenge = value;
+
+    if (previousPosition) {
+      this._currentChallenge.steps[0].position = previousPosition;
+    }
+
     this.mainService.changeChallenge(this.currentChallenge);
   }
 
@@ -38,8 +47,6 @@ export class ChallengeComponent implements OnInit {
     for (let i: number = 0; i < challenges.length; i++) {
       let challenge: Challenge = new Challenge(challenges[i], (filePath: string) => {
         this.mainService.changeFilePath(filePath);
-      },(step: Step) => {
-        this.mainService.changePosition(step.position);
       });
       this.challenges.push(challenge);
     }

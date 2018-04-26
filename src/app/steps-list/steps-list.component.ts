@@ -43,10 +43,6 @@ export class StepsListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.mainService.currentPosition
-      .subscribe(position => {
-        this.challenge.steps[0].position = position;
-      });
   }
 
 }

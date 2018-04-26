@@ -50,8 +50,7 @@ export class Challenge {
             questions: Array<string>,
             files: Array<string>
         },
-        private onFilePathChanged: Function,
-        public onPositionChanged: Function
+        private onFilePathChanged: Function
     ) {
 
         this.name = challenge.name;
