@@ -32,6 +32,9 @@ export class MainService {
   private moveSource = new BehaviorSubject<Move>(null);
   public currentMove = this.moveSource.asObservable();
 
+  private moveEstimateSource = new BehaviorSubject<Move>(null);
+  public currentMoveEstimate = this.moveEstimateSource.asObservable();
+
   private matrixVisibilitySource = new BehaviorSubject<boolean>(null);
   public currentMatrixVisibility = this.matrixVisibilitySource.asObservable();
 
@@ -76,6 +79,12 @@ export class MainService {
   changeBoundaryCells(cells: Array<Cell>) {
     this.boundaryCellsSource.next(cells);
   }
+
+  changeMoveEstimate(move: Move) {
+    this.moveEstimateSource.next(move);
+  }
+
+
 
   public getAppSettins(success?: Function, error?: Function): void {
     this.http.get("/appsettings.json")

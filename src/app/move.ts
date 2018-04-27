@@ -1,6 +1,9 @@
 import * as Enum from './enum';
 
 export class Move {
+
+    public estimate: boolean;
+
     constructor(public action: Enum.Action) {
 
     };

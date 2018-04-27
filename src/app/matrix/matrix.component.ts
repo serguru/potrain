@@ -39,6 +39,8 @@ export class MatrixComponent implements OnInit {
   pocket: Pocket;
   crossCell: Cell;
   crossCellFixed: boolean;
+  wrongMovesCount: number;
+  rightMovesCount: number;
 
   cardHeaders: Array<string> = ["", "A", "K", "Q", "J", "T", "9", "8", "7", "6", "5", "4", "3", "2"];
 
@@ -130,6 +132,11 @@ export class MatrixComponent implements OnInit {
   constructor(private mainService: MainService) {
     this.crossCellFixed = false;
     this.matrix = new Matrix();
+
+    this.wrongMovesCount = 0;
+    this.rightMovesCount = 0;
+  
+
   }
 
   ngOnInit() {
@@ -142,6 +149,11 @@ export class MatrixComponent implements OnInit {
     this.mainService.currentPocket
       .subscribe(pocket => {
         this.pocket = pocket;
+
+        if (!Pocket.ok(this.pocket)) {
+          this.rightMovesCount = 0;
+          this.wrongMovesCount = 0;
+        }
       });
 
     this.mainService.currentFilePath
@@ -149,9 +161,40 @@ export class MatrixComponent implements OnInit {
         this.filePath = filePath;
       });
 
+
+    this.mainService.currentMoveEstimate
+    .subscribe(move => {
+
+      if (!move) {
+        return;
+      }
+
+      if (move.estimate == true) {
+        this.rightMovesCount++;
+        return;
+      }
+
+      if (move.estimate == false) {
+        this.wrongMovesCount++;
+      }
+    });
+
     this.mainService.currentMove
       .subscribe(move => {
         this.move = this.move == move ? null : move;
+
+        if (!this.move) {
+          return;
+        }
+    
+        let rm: Move = this.rightMove;
+        if (!rm) {
+          return;
+        }
+    
+        this.move.estimate = this.move.action == rm.action;
+      
+        this.mainService.changeMoveEstimate(move);
       });
 
     this.mainService.currentMatrixVisibility
@@ -298,5 +341,20 @@ export class MatrixComponent implements OnInit {
 
     this.crossCellFixed = true;
     this.crossCell = cell;
+  }
+
+  public get totalMovesCount(): number {
+    return this.rightMovesCount + this.wrongMovesCount;
+  }
+
+  public get rightMovesPercent(): string {
+    let t: number = this.totalMovesCount;
+
+    if (t <= 0) {
+      return "0%";
+    }
+
+    return Math.round(this.rightMovesCount / t * 100) + "%";
+
   }
 }

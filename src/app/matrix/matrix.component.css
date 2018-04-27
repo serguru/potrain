@@ -9,7 +9,22 @@
 .matrix {
     width: 100%;
     table-layout: fixed;
-    /* display: block; */
+}
+
+.move-content {
+    height: 20px;
+    /* margin-left: 20px; */
+    /* text-align: center; */
+}
+
+.matrix-info {
+    /* height: 70px; */
+    width: 100%;
+
+    /* background-color: darkgoldenrod; */
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;    
 }
 
 .matrix td {
@@ -80,6 +95,7 @@
 
 .estimate td:first-of-type {
     height: 30px;
+    /* width: 70%; */
 }
 
 .estimate td:last-of-type {
@@ -90,12 +106,6 @@
     .estimate {
         margin-bottom: 0px;
     }
-}
-
-.move-content {
-    height: 20px;
-    margin-left: 20px;
-    text-align: center;
 }
 
 .raise-content {
