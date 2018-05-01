@@ -25,12 +25,12 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { PreflopComponent } from './preflop/preflop.component';
 
 const appRoutes: Routes = [
-  { path: 'preflop', component: PreflopComponent },
+  { path: '', component: PreflopComponent },
   { path: 'board', component: BoardComponent },
-  { path: '',
-    redirectTo: '/preflop',
-    pathMatch: 'full'
-  },
+  // { path: '',
+  //   redirectTo: '/preflop',
+  //   pathMatch: 'full'
+  // },
   { path: '**', component: NotFoundComponent }
 ];
 
